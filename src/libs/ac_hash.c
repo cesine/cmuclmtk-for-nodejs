@@ -42,12 +42,12 @@
 #include "pc_general.h"
 #include "general.h"
 
-/* create a new node, and sets the count to 1 */
-struct node *new_node( char *key )
+/* create a new cmuclmtk_node, and sets the count to 1 */
+struct cmuclmtk_node *new_node( char *key )
 {
-  struct node *x;
+  struct cmuclmtk_node *x;
 
-  x = (struct node *) rr_malloc( sizeof( struct node ) );
+  x = (struct cmuclmtk_node *) rr_malloc( sizeof( struct cmuclmtk_node ) );
   x->word = (char *) rr_malloc( (strlen( key ) + 1) * sizeof( char ) );
   strcpy( x->word, key );
   x->count = 1;
@@ -60,29 +60,29 @@ void new_hashtable( struct hash_table *table, int M )
   int i;
   
   table->size = M;
-  table->chain = (struct node **) rr_malloc( M * sizeof( struct node *) );
+  table->chain = (struct cmuclmtk_node **) rr_malloc( M * sizeof( struct cmuclmtk_node *) );
   for( i = 0; i < M; i++ ) {
     table->chain[i] = new_node( "HEAD_NODE" );
-    table->chain[i]->next = (struct node *) NULL;
+    table->chain[i]->next = (struct cmuclmtk_node *) NULL;
   }
 }
 
 /* update linked list */
-int update_chain( struct node *t, char *key )
+int update_chain( struct cmuclmtk_node *t, char *key )
 {
-  struct node *x;
+  struct cmuclmtk_node *x;
   int score;
 
   while( t->next != NULL ) {
     score = strcmp( key, t->next->word ); 
-    /* move to next node */
+    /* move to next cmuclmtk_node */
     if ( score > 0 ) t = t->next;
-    /* update node */
+    /* update cmuclmtk_node */
     else if ( score == 0 ) {
       t->next->count++;
       return 1;
     }
-    /* add new node */
+    /* add new cmuclmtk_node */
     else {
       x = new_node( key );
       x->next = t->next;
@@ -90,9 +90,9 @@ int update_chain( struct node *t, char *key )
       return 0;
     }
   }
-  /* add node at end */
+  /* add cmuclmtk_node at end */
   x = new_node( key );
-  x->next = (struct node *) NULL;
+  x->next = (struct cmuclmtk_node *) NULL;
   t->next = x;
   return 0;
 }
@@ -111,9 +111,9 @@ int hash( char *key, int M )
 }
 
 /* print contents of linked list */
-static void print_chain(FILE* outfp, struct node *t )
+static void print_chain(FILE* outfp, struct cmuclmtk_node *t )
 {
-  t = t->next;  /* don't print head node */
+  t = t->next;  /* don't print head cmuclmtk_node */
   while ( t != NULL ) {
     fprintf(outfp, "%s %d\n", t->word, t->count );
     t = t->next;
@@ -171,7 +171,7 @@ int nearest_prime(int num)
     for text2idngram and wngram2idngram. 
  */
 
-/* create a new node, and sets the index to ind */
+/* create a new cmuclmtk_node, and sets the index to ind */
 struct idngram_node *idngram_new_node( char *key ,wordid_t ind)
 {
   struct idngram_node *x;
@@ -224,7 +224,7 @@ int idngram_update_chain( struct idngram_node *t, char *key ,wordid_t ind)
   while( t->next != NULL )
     t = t->next;
 
-  /* add node at end */
+  /* add cmuclmtk_node at end */
   x = idngram_new_node( key,ind );
   x->next = (struct idngram_node *) NULL;
   t->next = x;

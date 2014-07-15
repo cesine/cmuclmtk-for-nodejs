@@ -43,22 +43,22 @@
 #include "general.h"
 #define MAX_STRING_LENGTH 501
 
-struct node {
+struct cmuclmtk_node {
   char *word;
   int count;
-  struct node *next;
+  struct cmuclmtk_node *next;
 };
 
 struct hash_table {
   int size;
-  struct node **chain;
+  struct cmuclmtk_node **chain;
 };
 
-struct node *new_node( char *key );
+struct cmuclmtk_node *new_node( char *key );
 
 void new_hashtable( struct hash_table *table, int M );
 
-int update_chain( struct node *t, char *key );
+int update_chain( struct cmuclmtk_node *t, char *key );
 
 int hash( char *key, int M );
 
