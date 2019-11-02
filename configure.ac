@@ -3,10 +3,12 @@
 
 AC_PREREQ(2.59)
 AC_INIT([cmuclmtk], [0.7], [air+logios@cs.cmu.edu])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([no-define foreign])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src/liblmest/disc_meth.h])
-AM_CONFIG_HEADER([config.h])
-AM_PROG_LIBTOOL
+AC_CONFIG_HEADER([config.h])
+
+LT_INIT
 
 AC_ARG_ENABLE(mingw,
 	[  --enable-mingw	  Compile for native Windows execution],
