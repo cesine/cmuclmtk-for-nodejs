@@ -1,1 +1,4 @@
 language: cpp
+
+after_script:
+  - git diff
