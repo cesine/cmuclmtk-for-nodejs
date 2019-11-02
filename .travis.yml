@@ -3,4 +3,4 @@ language: cpp
 script:
   - ./configure
   - make
-  - cd test; ./test.sh
+  - make check
