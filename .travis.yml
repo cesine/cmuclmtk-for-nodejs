@@ -1,4 +1,6 @@
 language: cpp
 
-after_script:
-  - git diff
+script:
+  - ./configure
+  - make
+  - cd test; ./test.sh
