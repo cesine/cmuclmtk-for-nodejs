@@ -1,0 +1,6 @@
+language: cpp
+
+script:
+  - ./configure
+  - make
+  - make check

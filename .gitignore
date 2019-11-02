@@ -1,0 +1,71 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Generated files
+*.log
+.deps
+Makefile
+.libs
+test/tmp.stats
+libtool
+config.h
+config.status
+stamp-h1
+
+# bin
+src/programs/binlm2arpa
+src/programs/evallm
+src/programs/idngram2lm
+src/programs/idngram2stats
+src/programs/lm_combine
+src/programs/lm_interpolate
+src/programs/mergeidngram
+src/programs/ngram2mgram
+src/programs/text2idngram
+src/programs/text2wfreq
+src/programs/text2wngram
+src/programs/wfreq2vocab
+src/programs/wngram2idngram
+
+# Test generated files
+test/English/emma11.filtered.arpa
+test/English/emma11.filtered.bin
+test/English/emma11.id1gram.filtered
+test/English/emma11.id1gram.txt.filtered
+test/English/emma11.id2gram.filtered
+test/English/emma11.id2gram.txt.filtered
+test/English/emma11.txt.filtered.idngram.32bits
+test/English/emma11.txt.filtered.idngram.txt
+test/English/pandp12.txt.idngram
+test/English/pandp12.vocab
+test/English/pandp12.wfreq
